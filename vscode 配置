@@ -1,0 +1,60 @@
+### vscode 配置
+
+.json file 配置分布式训练
+
+```
+        {
+            //python -m torch.distributed.launch --nproc_per_node=8 train_distributed.py --dataset_director  /data/guiyu.liu/dmpr-ps-out/train
+            "name": "train Distributed",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/guiyu.liu/miniconda3/envs/psd/lib/python3.8/site-packages/torch/distributed/run.py",//可执行文件路径
+            "console": "integratedTerminal",    
+            "justMyCode": true,
+            "args": ["--nproc_per_node=2","${workspaceFolder}/train_distributed.py","--dataset_director","/data/guiyu.liu/dmpr-ps-out/train"],
+            // "env": {"CUDA_VISIBLE_DEVICES":"0,1,2,3,4,5,6,7"},
+        },
+```
+
+
+### pip配置
+
+~/.config/pip/pip.conf
+
+```
+[global]
+
+#index-url = http://mirrors.aliyun.com/pypi/simple/
+#trusted-host = mirrors.aliyun.com
+#timeout = 120
+
+index-url = http://pypi.douban.com/simple
+trusted-host = pypi.douban.com
+timeout = 6000
+```
+
+
+
+### conda 配置
+
+~/.condarc
+
+```
+channels:
+  - defaults
+show_channel_urls: true
+default_channels:
+  - http://mirrors.aliyun.com/anaconda/pkgs/main
+  - http://mirrors.aliyun.com/anaconda/pkgs/r
+  - http://mirrors.aliyun.com/anaconda/pkgs/msys2
+custom_channels:
+  conda-forge: http://mirrors.aliyun.com/anaconda/cloud
+  msys2: http://mirrors.aliyun.com/anaconda/cloud
+  bioconda: http://mirrors.aliyun.com/anaconda/cloud
+  menpo: http://mirrors.aliyun.com/anaconda/cloud
+  pytorch: http://mirrors.aliyun.com/anaconda/cloud
+  simpleitk: http://mirrors.aliyun.com/anaconda/cloud
+
+
+```
+
