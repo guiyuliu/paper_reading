@@ -16,6 +16,14 @@
         },
 ```
 
+### 项目中module not found
+
+```
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))[:-5]) # insert project abs path
+print(os.path.dirname(os.path.abspath(__file__))[:-5])
+
+```
 
 ### pip配置
 
