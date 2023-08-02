@@ -23,6 +23,10 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))[:-5]) # insert project abs path
 print(os.path.dirname(os.path.abspath(__file__))[:-5])
 
+# 将workspace 塞入sys.path
+os.path.dirname(os.path.abspath(__file__))[:-5]
+'/home/guiyu.liu/projects/StreamPETR/'
+
 ```
 
 ### pip配置
