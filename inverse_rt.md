@@ -52,7 +52,15 @@ Given these, the inverse of the matrix is found as follows:
 > ```
 
 
-
+            ego2camera_r = np.linalg.inv(camera2ego[:3, :3])
+            # 等价于
+            ego2camera_t = -camera2ego[:3, 3]
+            ego2camera = np.eye(4)
+            ego2camera[:3,:3] = ego2camera_r
+            ego2camera[:3,3] = ego2camera_r @ ego2camera_t
+            
+            # 等价于
+            ego2camera = np.linalg.inv(camera2ego)
 
 
 ![image-20231015164723351](assets/inverse_rt/image-20231015164723351.png)
