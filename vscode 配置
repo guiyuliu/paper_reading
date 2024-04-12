@@ -16,6 +16,21 @@
         },
 ```
 
+
+        {
+            "name": "pth2onnx",
+            "type": "python",
+            "request": "launch",
+            "program": "tools/pth2onnx.py",//可执行文件路径
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            // "cwd": "${workspaceFolder}",
+            // "cwd": "${fileDirname}",
+            "args": ["projects/configs/StreamPETR/stream_petr_vov_flash_800_bs2_seq_24e_onnx.py",
+             "work_dirs/stream_petr_vov_flash_800_bs2_seq_24e/latest.pth",
+         ],
+        },
+
 ### 项目中module not found
 
 ```
