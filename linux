@@ -1,0 +1,65 @@
+
+| -------------------------------------- | --------------------------- |
+|                                        |                             |
+| 统计当前目录下文件的个数（不包括目录） | ls -l \| grep "^-" \| wc -l |
+| 统计当前目录下文件的个数（包括子目录） | ls -lR\|  grep "^-" \| wc -l |
+| 查看某目录下文件夹(目录)的个数（包括子目录） | ls -lR \|  grep "^d" \| wc -l 
+
+
+
+
+
+
+在跑Caffe、TensorFlow、pytorch之类的需要CUDA的程序时，强行Kill掉进程后发现显存仍然占用，这时候可以使用如下命令查看到top或者ps中看不到的进程，之后再kill掉：
+
+fuser -v /dev/nvidia*
+
+接着杀掉显示出的进程（有多个）：
+
+kill -9 12345
+
+kill -9 12345m
+
+批量清理显卡中残留进程：
+
+sudo fuser -v /dev/nvidia* |awk '{for(i=1;i<=NF;i++)print "kill -9 " $i;}' | sudo sh
+
+清理指定GPU显卡中残留进程，如GPU 2：
+
+sudo fuser -v /dev/nvidia2 |awk '{for(i=1;i<=NF;i++)print "kill -9 " $i;}' | sudo sh
+
+
+
+find 源目录 -type f -name '*.txt' -exec mv {} 目标目录 \;
+
+
+
+ls -lh
+
+ln-s<目标文件或目录><链接文件路径>
+
+Ln -s /home/user/file.tx t link.txt
+
+这将在当前目录下创建一个名为 link.txt 的软链接，它将指向 /home/user/file.txt
+
+
+
+docker
+
+sudo docker run --runtime=nvidia --shm-size=32g -it -v=/home/guiyu.liu:/home/guiyu.liu -v /data:/data -p 10082:22 --name lgy_dd3d  pytorch/pytorch:1.9.0-cuda11.1-cudnn8-devel /bin/bash 
+
+ 
+
+ [Priority 1] Site level configuration files
+
+   1. `/opt/conda/pip.conf`
+   
+ [Priority 2] User level configuration files
+
+  1. `/root/.config/pip/pip.conf`
+ 2. `/root/.pip/pip.conf`
+
+
+[Priority 3] Global level configuration files
+1. `/etc/pip.conf`
+2. `/etc/xdg/pip/pip.conf`
